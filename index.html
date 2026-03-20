@@ -618,16 +618,6 @@
         <h3>Systems Integration</h3>
         <p>Connecting your platforms, tools, and workflows into a unified, frictionless ecosystem built to scale with you.</p>
       </div>
-      <div class="service-card reveal">
-        <div class="service-num">07</div>
-        <h3>Advertising</h3>
-        <p>Compelling ad content delivered two ways — AI-generated visuals for speed and scale, and professional videography for campaigns that truly captivate.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-num">08</div>
-        <h3>Print & Outdoor Media</h3>
-        <p>From billboards and banners to flyers, posters, and branded signage — we design and produce physical materials that make your brand impossible to ignore.</p>
-      </div>
     </div>
   </section>
 
@@ -818,9 +808,9 @@
         <h2 class="section-title">Let's build<br>something<br>luminous.</h2>
         <p>Tell us what you're working on. We'll get back to you within one business day — no pressure, no pitch, just a conversation about how we can help.</p>
         <div class="contact-info">
-          <a href="/cdn-cgi/l/email-protection#aec3cfc7c280ddcbc2cbc0c7d6eec9c3cfc7c280cdc1c3">
+          <a href="mailto:mail.selenix@gmail.com">
             <div class="contact-icon">✉</div>
-            <span class="__cf_email__" data-cfemail="ddb0bcb4b1f3aeb8b1b8b3b4a59dbab0bcb4b1f3beb2b0">[email&#160;protected]</span>
+            mail.selenix@gmail.com
           </a>
           <a href="https://wa.me/94711116556" target="_blank">
             <div class="contact-icon">💬</div>
@@ -873,7 +863,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     /* STARS */
     const canvas = document.getElementById('stars');
     const ctx = canvas.getContext('2d');
@@ -932,4 +922,14 @@
         }
       });
     }, { threshold: 0.08 });
-    document.querySele
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    /* FORM */
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('form-msg').style.display = 'block';
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
