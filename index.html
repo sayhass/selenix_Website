@@ -10,19 +10,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:       #0c1219;
-      --bg2:      #0f1825;
-      --surface:  #131c2a;
-      --border:   rgba(180,200,230,0.08);
-      --silver:   #c8d6e5;
-      --silver2:  #8899b0;
-      --silver3:  #dce8f0;
-      --dim:      #4a5870;
-      --text:     #b8cad8;
-      --white:    #edf2f7;
-      --accent:   linear-gradient(135deg, #c8d6e5, #7a90a8);
-      --font-head:'Cormorant Garamond', serif;
-      --font-body:'Jost', sans-serif;
+      --bg:        #0c1219;
+      --bg2:       #0f1825;
+      --surface:   #131c2a;
+      --border:    rgba(180,200,230,0.08);
+      --silver:    #c8d6e5;
+      --silver2:   #8899b0;
+      --silver3:   #dce8f0;
+      --dim:       #4a5870;
+      --text:      #b8cad8;
+      --font-head: 'Cormorant Garamond', serif;
+      --font-body: 'Jost', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -37,47 +35,44 @@
       cursor: none;
     }
 
-    /* CURSOR */
+    /* ── CURSOR ── */
     .cursor {
       position: fixed; width: 7px; height: 7px;
       background: var(--silver3); border-radius: 50%;
       pointer-events: none; z-index: 99999;
       mix-blend-mode: difference;
+      transform: translate(-50%, -50%);
     }
     .cursor-ring {
       position: fixed; width: 30px; height: 30px;
       border: 1px solid rgba(200,215,235,0.3); border-radius: 50%;
       pointer-events: none; z-index: 99998;
+      transform: translate(-50%, -50%);
     }
 
-    /* STARS */
+    /* ── STARS ── */
     #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1rem 6%;
-      background: rgba(12,18,25,0.75);
+      background: rgba(12,18,25,0.78);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       animation: fadeDown 1s ease both;
     }
-    .nav-logo {
-      display: flex; align-items: center; gap: 0.65rem;
-    }
+    .nav-logo { display: flex; align-items: center; gap: 0.65rem; }
     .nav-logo img {
-      height: 42px; width: 42px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 8px rgba(200,215,235,0.25));
+      height: 40px; width: 40px; object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(200,215,235,0.2));
     }
     .nav-logo-text {
-      font-family: var(--font-head);
-      font-weight: 700; font-size: 1.4rem;
+      font-family: var(--font-head); font-weight: 700; font-size: 1.4rem;
       letter-spacing: 0.06em;
       background: linear-gradient(135deg, #dce8f0, #8899b0);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     nav ul { list-style: none; display: flex; gap: 2.5rem; }
     nav ul a {
@@ -94,43 +89,30 @@
     }
     .nav-cta:hover { background: rgba(200,215,235,0.06) !important; }
 
-    /* HERO */
+    /* ── HERO ── */
     #hero {
       position: relative; z-index: 1;
       min-height: 100vh;
       display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      padding: 8rem 6% 6rem;
-      overflow: hidden;
+      text-align: center; padding: 8rem 6% 6rem; overflow: hidden;
     }
-
     .hero-moon-glow {
-      position: absolute;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -58%);
+      position: absolute; width: 600px; height: 600px; border-radius: 50%;
+      top: 50%; left: 50%; transform: translate(-50%, -58%);
       background: radial-gradient(circle, rgba(180,205,230,0.07) 0%, transparent 70%);
-      animation: pulse 6s ease-in-out infinite;
-      pointer-events: none;
+      animation: glowPulse 6s ease-in-out infinite; pointer-events: none;
     }
     .hero-moon {
-      position: absolute;
-      width: 420px; height: 420px;
-      border-radius: 50%;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -58%);
+      position: absolute; width: 420px; height: 420px; border-radius: 50%;
+      top: 50%; left: 50%; transform: translate(-50%, -58%);
       background: radial-gradient(circle at 36% 36%,
-        #dce8f4 0%, #b0c4d8 28%, #7a90a8 58%, #3a4f65 82%, #192030 100%
-      );
+        #dce8f4 0%, #b0c4d8 28%, #7a90a8 58%, #3a4f65 82%, #192030 100%);
       box-shadow:
         inset -38px -18px 75px rgba(0,0,0,0.7),
         inset 18px 14px 38px rgba(220,232,244,0.1),
-        0 0 120px rgba(160,190,220,0.08),
-        0 0 320px rgba(140,170,200,0.04);
+        0 0 120px rgba(160,190,220,0.08);
       animation: moonFloat 8s ease-in-out infinite;
-      opacity: 0.2;
-      pointer-events: none;
+      opacity: 0.2; pointer-events: none;
     }
     .hero-moon::before {
       content: ''; position: absolute; inset: 0; border-radius: 50%;
@@ -139,18 +121,15 @@
         radial-gradient(circle at 32% 58%, rgba(0,0,0,0.12) 0 10px, transparent 10px),
         radial-gradient(circle at 70% 28%, rgba(0,0,0,0.13) 0 8px, transparent 8px);
     }
-
     @keyframes moonFloat {
       0%,100% { transform: translate(-50%,-58%) translateY(0); }
       50%      { transform: translate(-50%,-58%) translateY(-16px); }
     }
-    @keyframes pulse {
-      0%,100% { opacity: 0.5; transform: translate(-50%,-58%) scale(1); }
-      50%      { opacity: 1;   transform: translate(-50%,-58%) scale(1.05); }
+    @keyframes glowPulse {
+      0%,100% { opacity: 0.5; }
+      50%      { opacity: 1; }
     }
-
     .hero-content { position: relative; z-index: 2; }
-
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 0.75rem;
       font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
@@ -161,130 +140,90 @@
       content: ''; width: 26px; height: 1px;
       background: var(--silver2); opacity: 0.5;
     }
-
     h1 {
       font-family: var(--font-head);
       font-size: clamp(3.2rem, 7.5vw, 7rem);
-      font-weight: 600; line-height: 0.95;
-      letter-spacing: 0.01em;
+      font-weight: 600; line-height: 0.95; letter-spacing: 0.01em;
       background: linear-gradient(160deg, #edf2f7 0%, #c8d6e5 50%, #7a90a8 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       animation: fadeUp 1s 0.45s ease both;
     }
-
     .hero-motto {
       margin: 1.8rem auto 0;
-      font-family: var(--font-head);
-      font-style: italic;
-      font-size: 1.15rem;
-      color: var(--silver2);
-      letter-spacing: 0.05em;
+      font-family: var(--font-head); font-style: italic; font-size: 1.15rem;
+      color: var(--silver2); letter-spacing: 0.05em;
       animation: fadeUp 1s 0.58s ease both;
     }
-
     .hero-sub {
-      margin: 1.25rem auto 0;
-      font-size: 0.95rem; color: var(--dim);
-      max-width: 480px; font-weight: 300;
-      line-height: 1.85; letter-spacing: 0.02em;
+      margin: 1.25rem auto 0; font-size: 0.95rem; color: var(--dim);
+      max-width: 480px; font-weight: 300; line-height: 1.85;
       animation: fadeUp 1s 0.65s ease both;
     }
-
     .hero-actions {
-      display: flex; gap: 1.25rem; margin-top: 2.8rem;
-      justify-content: center;
+      display: flex; gap: 1.25rem; margin-top: 2.8rem; justify-content: center;
       animation: fadeUp 1s 0.8s ease both;
     }
-
     .btn-primary {
       background: linear-gradient(135deg, #c8d6e5, #7a90a8);
-      color: #0a1018;
-      font-family: var(--font-body); font-weight: 600;
+      color: #0a1018; font-family: var(--font-body); font-weight: 600;
       font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
       padding: 0.85rem 2.2rem; border: none; border-radius: 2rem;
       cursor: none; text-decoration: none;
       transition: transform 0.25s, box-shadow 0.25s;
       box-shadow: 0 0 40px rgba(160,190,220,0.2);
     }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 60px rgba(160,190,220,0.38);
-    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(160,190,220,0.38); }
     .btn-ghost {
       background: transparent; color: var(--silver2);
       font-family: var(--font-body); font-weight: 400;
       font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 0.85rem 2.2rem;
-      border: 1px solid var(--border); border-radius: 2rem;
-      cursor: none; text-decoration: none;
-      transition: border-color 0.3s, color 0.3s;
+      padding: 0.85rem 2.2rem; border: 1px solid var(--border); border-radius: 2rem;
+      cursor: none; text-decoration: none; transition: border-color 0.3s, color 0.3s;
     }
     .btn-ghost:hover { border-color: rgba(200,215,235,0.22); color: var(--silver3); }
-
     .moon-phases {
-      position: absolute; bottom: 2.5rem; left: 50%;
-      transform: translateX(-50%);
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
       display: flex; align-items: center; gap: 1rem;
       animation: fadeUp 1s 1s ease both;
     }
     .phase { color: rgba(200,215,235,0.18); font-size: 1rem; }
     .phase.active { color: rgba(200,215,235,0.85); filter: drop-shadow(0 0 6px rgba(200,215,235,0.5)); }
 
-    /* SHARED */
+    /* ── SHARED ── */
     section { position: relative; z-index: 1; padding: 8rem 6%; }
-
     .section-label {
       font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--silver2); font-weight: 500; margin-bottom: 1rem;
       display: flex; align-items: center; gap: 0.75rem;
     }
-    .section-label::before {
-      content: ''; width: 18px; height: 1px;
-      background: var(--silver2); opacity: 0.5;
-    }
+    .section-label::before { content: ''; width: 18px; height: 1px; background: var(--silver2); opacity: 0.5; }
     .section-title {
-      font-family: var(--font-head);
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      font-weight: 600; letter-spacing: 0.01em;
+      font-family: var(--font-head); font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 600; letter-spacing: 0.01em; line-height: 1.1;
       background: linear-gradient(135deg, #edf2f7, #8899b0);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1.1;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    /* SERVICES */
-    #services {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
+    /* ── SERVICES ── */
+    #services { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .services-header { max-width: 560px; margin-bottom: 4.5rem; }
-    .services-header p {
-      margin-top: 1.2rem; color: var(--dim);
-      font-size: 0.92rem; font-weight: 300; line-height: 1.85;
-    }
-
+    .services-header p { margin-top: 1.2rem; color: var(--dim); font-size: 0.92rem; font-weight: 300; line-height: 1.85; }
     .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      display: grid; grid-template-columns: repeat(4, 1fr);
       gap: 1px; background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 1.2rem; overflow: hidden;
+      border: 1px solid var(--border); border-radius: 1.2rem; overflow: hidden;
     }
     .service-card {
       background: var(--bg2); padding: 2.8rem 2.2rem;
       position: relative; transition: background 0.4s; overflow: hidden;
     }
     .service-card::after {
-      content: ''; position: absolute;
-      bottom: 0; left: 0; right: 0; height: 1px;
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--silver2), transparent);
       opacity: 0; transition: opacity 0.4s;
     }
     .service-card:hover { background: #111c2a; }
     .service-card:hover::after { opacity: 1; }
-
     .service-num {
       font-family: var(--font-head); font-size: 3.2rem; font-weight: 600;
       color: rgba(160,190,220,0.09); line-height: 1; margin-bottom: 1.4rem;
@@ -297,11 +236,8 @@
     }
     .service-card p { color: var(--dim); font-size: 0.86rem; line-height: 1.78; font-weight: 300; }
 
-    /* ABOUT */
-    #about {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 7rem; align-items: center;
-    }
+    /* ── ABOUT ── */
+    #about { display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: center; }
     .about-visual {
       position: relative; height: 460px;
       display: flex; align-items: center; justify-content: center;
@@ -309,14 +245,13 @@
     .deco-moon {
       width: 280px; height: 280px; border-radius: 50%;
       background: radial-gradient(circle at 38% 35%,
-        #dce8f4 0%, #b0c4d8 30%, #7a90a8 62%, #3a4f65 88%, #192030 100%
-      );
-      box-shadow:
-        inset -32px -18px 65px rgba(0,0,0,0.72),
-        inset 14px 12px 30px rgba(220,232,244,0.09),
-        0 0 70px rgba(160,190,220,0.09);
-      animation: moonFloat 9s ease-in-out infinite;
-      position: relative;
+        #dce8f4 0%, #b0c4d8 30%, #7a90a8 62%, #3a4f65 88%, #192030 100%);
+      box-shadow: inset -32px -18px 65px rgba(0,0,0,0.72), 0 0 70px rgba(160,190,220,0.09);
+      animation: moonFloat2 9s ease-in-out infinite; position: relative;
+    }
+    @keyframes moonFloat2 {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-14px); }
     }
     .deco-moon::before {
       content: ''; position: absolute; inset: 0; border-radius: 50%;
@@ -337,188 +272,108 @@
       top: 50%; left: -2.5px; margin-top: -2.5px;
       box-shadow: 0 0 7px var(--silver2);
     }
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     .about-stats {
       position: absolute; bottom: 0; right: -0.5rem;
       display: flex; flex-direction: column; gap: 0.7rem;
     }
     .stat-chip {
       background: rgba(10,15,22,0.92); border: 1px solid var(--border);
-      backdrop-filter: blur(12px); border-radius: 0.75rem;
-      padding: 0.9rem 1.4rem;
+      backdrop-filter: blur(12px); border-radius: 0.75rem; padding: 0.9rem 1.4rem;
     }
-    .stat-chip .num {
-      font-family: var(--font-head); font-size: 1.9rem;
-      font-weight: 600; color: var(--silver3); line-height: 1;
-    }
+    .stat-chip .num { font-family: var(--font-head); font-size: 1.9rem; font-weight: 600; color: var(--silver3); line-height: 1; }
     .stat-chip .lbl { font-size: 0.7rem; color: var(--dim); letter-spacing: 0.06em; margin-top: 0.2rem; }
-
-    .about-content p {
-      color: var(--dim); font-size: 0.93rem; line-height: 1.9;
-      margin-top: 1.2rem; font-weight: 300;
-    }
-    .about-pills {
-      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2.2rem;
-    }
+    .about-content p { color: var(--dim); font-size: 0.93rem; line-height: 1.9; margin-top: 1.2rem; font-weight: 300; }
+    .about-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2.2rem; }
     .pill {
-      padding: 0.28rem 0.85rem; border: 1px solid var(--border);
-      border-radius: 2rem; font-size: 0.73rem; color: var(--dim);
-      letter-spacing: 0.06em; background: rgba(255,255,255,0.02);
-      transition: border-color 0.3s, color 0.3s; cursor: none;
+      padding: 0.28rem 0.85rem; border: 1px solid var(--border); border-radius: 2rem;
+      font-size: 0.73rem; color: var(--dim); letter-spacing: 0.06em;
+      background: rgba(255,255,255,0.02); transition: border-color 0.3s, color 0.3s; cursor: none;
     }
     .pill:hover { border-color: rgba(160,190,220,0.3); color: var(--silver3); }
 
-    /* TEAM */
-    #team {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
+    /* ── TEAM ── */
+    #team { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .team-header { max-width: 520px; margin-bottom: 4.5rem; }
     .team-header p { margin-top: 1.2rem; color: var(--dim); font-size: 0.92rem; font-weight: 300; line-height: 1.85; }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .team-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      overflow: hidden;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 1rem; overflow: hidden;
       transition: transform 0.35s, box-shadow 0.35s;
     }
-    .team-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 30px rgba(160,190,220,0.05);
-    }
+    .team-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
     .team-photo {
-      width: 100%; height: 220px;
+      width: 100%; height: 200px;
       background: linear-gradient(160deg, #111c2a, #0c1219);
       position: relative; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
     }
-    /* Silver gradient overlay shimmer */
     .team-photo::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, var(--surface) 100%);
+      background: linear-gradient(to bottom, transparent 55%, var(--surface) 100%);
     }
+    .team-photo svg { width: 120px; height: 165px; opacity: 0.55; }
+    .team-info { padding: 1.4rem; }
+    .team-name { font-family: var(--font-head); font-size: 1.25rem; font-weight: 600; color: var(--silver3); }
+    .team-role { font-size: 0.75rem; color: var(--silver2); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.2rem; }
+    .team-edu { margin-top: 0.6rem; font-size: 0.78rem; color: var(--dim); font-weight: 300; line-height: 1.5; }
+    .team-edu span { font-size: 0.7rem; color: rgba(160,190,220,0.4); display: block; margin-top: 0.15rem; }
 
-    /* Placeholder SVG silhouettes */
-    .team-photo svg { width: 130px; height: 180px; opacity: 0.55; }
-
-    .team-info { padding: 1.5rem; }
-    .team-name {
-      font-family: var(--font-head); font-size: 1.3rem;
-      font-weight: 600; color: var(--silver3); letter-spacing: 0.02em;
-    }
-    .team-role {
-      font-size: 0.78rem; color: var(--silver2);
-      letter-spacing: 0.08em; text-transform: uppercase;
-      margin-top: 0.2rem; font-weight: 500;
-    }
-    .team-edu {
-      margin-top: 0.6rem; font-size: 0.8rem;
-      color: var(--dim); font-weight: 300; line-height: 1.5;
-    }
-    .team-edu span {
-      font-size: 0.72rem; color: rgba(160,190,220,0.45);
-      display: block; margin-top: 0.15rem; letter-spacing: 0.04em;
-    }
-
-    /* CONTACT */
+    /* ── CONTACT ── */
     #contact { background: var(--bg); border-top: 1px solid var(--border); }
-    .contact-wrap {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 8rem; align-items: start;
-    }
-    .contact-left p {
-      color: var(--dim); font-size: 0.93rem;
-      line-height: 1.9; margin-top: 1.2rem; font-weight: 300;
-    }
-    .contact-info {
-      margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0.9rem;
-    }
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
+    .contact-left p { color: var(--dim); font-size: 0.93rem; line-height: 1.9; margin-top: 1.2rem; font-weight: 300; }
+    .contact-info { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
     .contact-info a {
-      color: var(--dim); text-decoration: none;
-      font-size: 0.85rem; letter-spacing: 0.05em;
-      display: flex; align-items: center; gap: 0.7rem;
-      transition: color 0.3s;
+      color: var(--dim); text-decoration: none; font-size: 0.85rem;
+      letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.7rem; transition: color 0.3s;
     }
     .contact-info a:hover { color: var(--silver3); }
     .contact-icon {
       width: 34px; height: 34px; border-radius: 50%;
-      border: 1px solid var(--border);
-      background: rgba(160,190,220,0.04);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem; flex-shrink: 0;
+      border: 1px solid var(--border); background: rgba(160,190,220,0.04);
+      display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0;
     }
-
     .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
     .field-wrap { display: flex; flex-direction: column; gap: 0.5rem; }
-    label {
-      font-size: 0.68rem; color: var(--dim);
-      letter-spacing: 0.14em; text-transform: uppercase;
-    }
+    label { font-size: 0.68rem; color: var(--dim); letter-spacing: 0.14em; text-transform: uppercase; }
     input, textarea {
       background: rgba(160,190,220,0.03); border: 1px solid var(--border);
       border-radius: 0.5rem; color: var(--silver3);
-      font-family: var(--font-body); font-size: 0.88rem;
-      font-weight: 300; padding: 0.85rem 1.1rem;
-      outline: none; transition: border-color 0.3s, box-shadow 0.3s; width: 100%;
+      font-family: var(--font-body); font-size: 0.88rem; font-weight: 300;
+      padding: 0.85rem 1.1rem; outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s; width: 100%;
     }
     input::placeholder, textarea::placeholder { color: rgba(74,88,112,0.55); }
-    input:focus, textarea:focus {
-      border-color: rgba(160,190,220,0.28);
-      box-shadow: 0 0 0 3px rgba(160,190,220,0.05);
-    }
+    input:focus, textarea:focus { border-color: rgba(160,190,220,0.28); box-shadow: 0 0 0 3px rgba(160,190,220,0.05); }
     textarea { resize: vertical; min-height: 120px; }
-    #form-msg {
-      text-align: center; font-size: 0.82rem; color: var(--silver2);
-      display: none; margin-top: 0.25rem; letter-spacing: 0.06em;
-    }
+    #form-msg { text-align: center; font-size: 0.82rem; color: var(--silver2); display: none; margin-top: 0.25rem; letter-spacing: 0.06em; }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
       position: relative; z-index: 1; padding: 2.2rem 6%;
       border-top: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
     }
     .footer-logo { display: flex; align-items: center; gap: 0.5rem; }
     .footer-logo img { height: 28px; width: 28px; object-fit: contain; opacity: 0.75; }
-    .footer-logo span {
-      font-family: var(--font-head); font-size: 1rem;
-      color: var(--silver2); letter-spacing: 0.06em;
-    }
+    .footer-logo span { font-family: var(--font-head); font-size: 1rem; color: var(--silver2); letter-spacing: 0.06em; }
     footer p { color: var(--dim); font-size: 0.75rem; letter-spacing: 0.05em; }
     .footer-links { display: flex; gap: 2rem; }
-    .footer-links a {
-      color: var(--dim); text-decoration: none;
-      font-size: 0.74rem; letter-spacing: 0.1em;
-      text-transform: uppercase; transition: color 0.3s;
-    }
+    .footer-links a { color: var(--dim); text-decoration: none; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
     .footer-links a:hover { color: var(--silver3); }
 
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
-    }
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 860px) {
       nav ul { display: none; }
       #about, .contact-wrap { grid-template-columns: 1fr; }
@@ -526,6 +381,8 @@
       .orbit-1 { width: 260px; height: 260px; }
       .orbit-2 { width: 340px; height: 340px; }
       .hero-actions { flex-direction: column; align-items: center; }
+      .services-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
       body { cursor: auto; }
       .cursor, .cursor-ring { display: none; }
     }
@@ -560,7 +417,7 @@
       <h1>Illuminate.<br>Innovate.<br>Elevate.</h1>
       <p class="hero-motto">"To enlighten the darkness around us"</p>
       <p class="hero-sub">
-        We are a business solutions company delivering transformative strategies across technology, marketing, and operations — so your business can shine.
+        A business solutions company delivering transformative strategies across technology, marketing, and operations — so your business can shine.
       </p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Start a project</a>
@@ -568,15 +425,15 @@
       </div>
     </div>
     <div class="moon-phases">
-      <span class="phase">🌑</span>
-      <span class="phase">🌒</span>
-      <span class="phase">🌓</span>
-      <span class="phase">🌔</span>
-      <span class="phase active">🌕</span>
-      <span class="phase">🌖</span>
-      <span class="phase">🌗</span>
-      <span class="phase">🌘</span>
-      <span class="phase">🌑</span>
+      <span class="phase">&#127761;</span>
+      <span class="phase">&#127762;</span>
+      <span class="phase">&#127763;</span>
+      <span class="phase">&#127764;</span>
+      <span class="phase active">&#127765;</span>
+      <span class="phase">&#127766;</span>
+      <span class="phase">&#127767;</span>
+      <span class="phase">&#127768;</span>
+      <span class="phase">&#127761;</span>
     </div>
   </section>
 
@@ -595,28 +452,38 @@
       </div>
       <div class="service-card reveal">
         <div class="service-num">02</div>
-        <h3>Marketing & Branding</h3>
+        <h3>Marketing &amp; Branding</h3>
         <p>Strategic brand building, digital marketing campaigns, and creative direction that connect your business with the right audience.</p>
       </div>
       <div class="service-card reveal">
         <div class="service-num">03</div>
         <h3>Business Strategy</h3>
-        <p>Operational planning, process optimization, and growth consulting that turns ambition into actionable, measurable outcomes.</p>
+        <p>Operational planning, process optimisation, and growth consulting that turns ambition into actionable, measurable outcomes.</p>
       </div>
       <div class="service-card reveal">
         <div class="service-num">04</div>
-        <h3>AI & Automation</h3>
+        <h3>AI &amp; Automation</h3>
         <p>Intelligent automation and AI-powered solutions that reduce overhead, unlock insights, and keep you ahead of the curve.</p>
       </div>
       <div class="service-card reveal">
         <div class="service-num">05</div>
-        <h3>Event & Community</h3>
+        <h3>Event &amp; Community</h3>
         <p>End-to-end event management and community building that creates meaningful connections and lasting partnerships.</p>
       </div>
       <div class="service-card reveal">
         <div class="service-num">06</div>
         <h3>Systems Integration</h3>
         <p>Connecting your platforms, tools, and workflows into a unified, frictionless ecosystem built to scale with you.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">07</div>
+        <h3>Advertising</h3>
+        <p>Compelling ad content delivered two ways — AI-generated visuals for speed and scale, and professional videography for campaigns that truly captivate.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">08</div>
+        <h3>Print &amp; Outdoor Media</h3>
+        <p>From billboards and banners to flyers, posters, and branded signage — we design and produce physical materials that make your brand impossible to ignore.</p>
       </div>
     </div>
   </section>
@@ -649,7 +516,7 @@
         <span class="pill">Marketing</span>
         <span class="pill">Branding</span>
         <span class="pill">Strategy</span>
-        <span class="pill">AI & Automation</span>
+        <span class="pill">AI &amp; Automation</span>
         <span class="pill">Operations</span>
         <span class="pill">Community</span>
         <span class="pill">Events</span>
@@ -666,107 +533,77 @@
     </div>
     <div class="team-grid">
 
-      <!-- Sehas -->
       <div class="team-card reveal">
         <div class="team-photo">
-          <svg viewBox="0 0 130 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#c8d6e5"/>
-                <stop offset="100%" style="stop-color:#4a6070"/>
-              </linearGradient>
-            </defs>
-            <ellipse cx="65" cy="52" rx="28" ry="32" fill="url(#sg1)" opacity="0.8"/>
-            <path d="M15 170 Q65 110 115 170" fill="url(#sg1)" opacity="0.6"/>
-            <circle cx="88" cy="38" r="3" fill="white" opacity="0.6"/>
+          <svg viewBox="0 0 120 165" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c8d6e5"/><stop offset="100%" stop-color="#4a6070"/></linearGradient></defs>
+            <ellipse cx="60" cy="50" rx="26" ry="30" fill="url(#g1)" opacity="0.8"/>
+            <path d="M10 160 Q60 105 110 160" fill="url(#g1)" opacity="0.55"/>
+            <circle cx="80" cy="36" r="3" fill="white" opacity="0.6"/>
           </svg>
         </div>
         <div class="team-info">
           <div class="team-name">Sehas Dissanayaka</div>
           <div class="team-role">Chief Executive Officer</div>
-          <div class="team-edu">BSc Hons, Digital Marketing & Brand Management<span>University of Reading (Reading)</span></div>
+          <div class="team-edu">BSc Hons, Digital Marketing &amp; Brand Management<span>University of Reading</span></div>
         </div>
       </div>
 
-      <!-- Ruzny -->
       <div class="team-card reveal">
         <div class="team-photo">
-          <svg viewBox="0 0 130 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="sg2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#b0c4d8"/>
-                <stop offset="100%" style="stop-color:#3a5060"/>
-              </linearGradient>
-            </defs>
-            <ellipse cx="65" cy="50" rx="26" ry="30" fill="url(#sg2)" opacity="0.8"/>
-            <path d="M18 170 Q65 108 112 170" fill="url(#sg2)" opacity="0.6"/>
-            <polygon points="92,30 95,38 88,38" fill="white" opacity="0.5"/>
+          <svg viewBox="0 0 120 165" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#b0c4d8"/><stop offset="100%" stop-color="#3a5060"/></linearGradient></defs>
+            <ellipse cx="60" cy="48" rx="25" ry="28" fill="url(#g2)" opacity="0.8"/>
+            <path d="M12 160 Q60 106 108 160" fill="url(#g2)" opacity="0.55"/>
+            <polygon points="84,28 87,36 81,36" fill="white" opacity="0.5"/>
           </svg>
         </div>
         <div class="team-info">
           <div class="team-name">Ruzny Moulana</div>
-          <div class="team-role">AI & Innovation Lead</div>
-          <div class="team-edu">BSc Hons, Computer Science<span>University of Reading (Reading)</span></div>
+          <div class="team-role">AI &amp; Innovation Lead</div>
+          <div class="team-edu">BSc Hons, Computer Science<span>University of Reading</span></div>
         </div>
       </div>
 
-      <!-- Vidura -->
       <div class="team-card reveal">
         <div class="team-photo">
-          <svg viewBox="0 0 130 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="sg3" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#dce8f4"/>
-                <stop offset="100%" style="stop-color:#5a7088"/>
-              </linearGradient>
-            </defs>
-            <ellipse cx="65" cy="52" rx="27" ry="31" fill="url(#sg3)" opacity="0.8"/>
-            <path d="M14 170 Q65 112 116 170" fill="url(#sg3)" opacity="0.6"/>
-            <circle cx="82" cy="36" r="2.5" fill="white" opacity="0.55"/>
-            <circle cx="89" cy="32" r="1.5" fill="white" opacity="0.4"/>
+          <svg viewBox="0 0 120 165" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#dce8f4"/><stop offset="100%" stop-color="#5a7088"/></linearGradient></defs>
+            <ellipse cx="60" cy="50" rx="26" ry="29" fill="url(#g3)" opacity="0.8"/>
+            <path d="M10 160 Q60 108 110 160" fill="url(#g3)" opacity="0.55"/>
+            <circle cx="78" cy="34" r="2.5" fill="white" opacity="0.55"/>
+            <circle cx="84" cy="30" r="1.5" fill="white" opacity="0.38"/>
           </svg>
         </div>
         <div class="team-info">
           <div class="team-name">Vidura Prabath</div>
-          <div class="team-role">Community & Partnerships Manager</div>
-          <div class="team-edu">BSc Hons, Tourism & Event Management<span>University of Reading (Reading)</span></div>
+          <div class="team-role">Community &amp; Partnerships Manager</div>
+          <div class="team-edu">BSc Hons, Tourism &amp; Event Management<span>University of Reading</span></div>
         </div>
       </div>
 
-      <!-- Shehan -->
       <div class="team-card reveal">
         <div class="team-photo">
-          <svg viewBox="0 0 130 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="sg4" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#c0d0e0"/>
-                <stop offset="100%" style="stop-color:#405060"/>
-              </linearGradient>
-            </defs>
-            <ellipse cx="65" cy="50" rx="27" ry="30" fill="url(#sg4)" opacity="0.8"/>
-            <path d="M16 170 Q65 110 114 170" fill="url(#sg4)" opacity="0.6"/>
-            <circle cx="86" cy="35" r="2.5" fill="white" opacity="0.5"/>
+          <svg viewBox="0 0 120 165" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c0d0e0"/><stop offset="100%" stop-color="#405060"/></linearGradient></defs>
+            <ellipse cx="60" cy="48" rx="25" ry="28" fill="url(#g4)" opacity="0.8"/>
+            <path d="M11 160 Q60 106 109 160" fill="url(#g4)" opacity="0.55"/>
+            <circle cx="82" cy="33" r="2.5" fill="white" opacity="0.5"/>
           </svg>
         </div>
         <div class="team-info">
           <div class="team-name">Shehan Malik</div>
-          <div class="team-role">Finance & Operations Manager</div>
+          <div class="team-role">Finance &amp; Operations Manager</div>
         </div>
       </div>
 
-      <!-- Hasantha -->
       <div class="team-card reveal">
         <div class="team-photo">
-          <svg viewBox="0 0 130 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="sg5" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#b8cad8"/>
-                <stop offset="100%" style="stop-color:#384858"/>
-              </linearGradient>
-            </defs>
-            <ellipse cx="65" cy="52" rx="26" ry="29" fill="url(#sg5)" opacity="0.8"/>
-            <path d="M17 170 Q65 112 113 170" fill="url(#sg5)" opacity="0.6"/>
-            <polygon points="90,28 94,36 86,36" fill="white" opacity="0.45"/>
+          <svg viewBox="0 0 120 165" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#b8cad8"/><stop offset="100%" stop-color="#384858"/></linearGradient></defs>
+            <ellipse cx="60" cy="50" rx="24" ry="27" fill="url(#g5)" opacity="0.8"/>
+            <path d="M12 160 Q60 108 108 160" fill="url(#g5)" opacity="0.55"/>
+            <polygon points="84,26 88,34 80,34" fill="white" opacity="0.45"/>
           </svg>
         </div>
         <div class="team-info">
@@ -775,20 +612,14 @@
         </div>
       </div>
 
-      <!-- Janidu -->
       <div class="team-card reveal">
         <div class="team-photo">
-          <svg viewBox="0 0 130 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="sg6" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#d0dcea"/>
-                <stop offset="100%" style="stop-color:#4a6070"/>
-              </linearGradient>
-            </defs>
-            <ellipse cx="65" cy="50" rx="28" ry="31" fill="url(#sg6)" opacity="0.8"/>
-            <path d="M14 170 Q65 108 116 170" fill="url(#sg6)" opacity="0.6"/>
-            <circle cx="87" cy="34" r="2.5" fill="white" opacity="0.55"/>
-            <circle cx="92" cy="30" r="1.5" fill="white" opacity="0.38"/>
+          <svg viewBox="0 0 120 165" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g6" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#d0dcea"/><stop offset="100%" stop-color="#4a6070"/></linearGradient></defs>
+            <ellipse cx="60" cy="48" rx="26" ry="29" fill="url(#g6)" opacity="0.8"/>
+            <path d="M10 160 Q60 106 110 160" fill="url(#g6)" opacity="0.55"/>
+            <circle cx="80" cy="32" r="2.5" fill="white" opacity="0.55"/>
+            <circle cx="86" cy="28" r="1.5" fill="white" opacity="0.38"/>
           </svg>
         </div>
         <div class="team-info">
@@ -808,41 +639,41 @@
         <h2 class="section-title">Let's build<br>something<br>luminous.</h2>
         <p>Tell us what you're working on. We'll get back to you within one business day — no pressure, no pitch, just a conversation about how we can help.</p>
         <div class="contact-info">
-          <a href="mailto:mail.selenix@gmail.com">
-            <div class="contact-icon">✉</div>
-            mail.selenix@gmail.com
+          <a href="mailto:mail.selenix&#64;gmail.com">
+            <div class="contact-icon">&#9993;</div>
+            mail.selenix&#64;gmail.com
           </a>
-          <a href="https://wa.me/94711116556" target="_blank">
-            <div class="contact-icon">💬</div>
+          <a href="https://wa.me/94711116556" target="_blank" rel="noopener">
+            <div class="contact-icon">&#128172;</div>
             +94 71 111 6556 &nbsp;(WhatsApp)
           </a>
           <a href="tel:+94711116556">
-            <div class="contact-icon">📞</div>
+            <div class="contact-icon">&#128222;</div>
             +94 71 111 6556 &nbsp;(Call)
           </a>
         </div>
       </div>
       <form class="contact-form reveal" onsubmit="handleSubmit(event)">
         <div class="field-wrap">
-          <label for="name">Your name</label>
-          <input type="text" id="name" placeholder="Jane Smith" required />
+          <label for="fname">Your name</label>
+          <input type="text" id="fname" placeholder="Jane Smith" required />
         </div>
         <div class="field-wrap">
-          <label for="email">Email address</label>
-          <input type="email" id="email" placeholder="jane@company.com" required />
+          <label for="femail">Email address</label>
+          <input type="email" id="femail" placeholder="jane@company.com" required />
         </div>
         <div class="field-wrap">
-          <label for="subject">What do you need help with?</label>
-          <input type="text" id="subject" placeholder="e.g. Branding, software, strategy…" />
+          <label for="fsubject">What do you need help with?</label>
+          <input type="text" id="fsubject" placeholder="e.g. Branding, software, strategy..." />
         </div>
         <div class="field-wrap">
-          <label for="message">Tell us more</label>
-          <textarea id="message" placeholder="Share some context about your business and goals…" required></textarea>
+          <label for="fmessage">Tell us more</label>
+          <textarea id="fmessage" placeholder="Share some context about your business and goals..." required></textarea>
         </div>
         <button type="submit" class="btn-primary" style="cursor:none;width:100%;text-align:center;">
-          Send message &nbsp;→
+          Send message &nbsp;&#8594;
         </button>
-        <p id="form-msg">✦ &nbsp;Message received. We'll be in touch soon.</p>
+        <p id="form-msg">&#10022; &nbsp;Message received. We'll be in touch soon.</p>
       </form>
     </div>
   </section>
@@ -853,7 +684,7 @@
       <img src="logo.png" alt="Selenix" />
       <span>SELENIX CO.</span>
     </div>
-    <p>© 2025 Selenix Co. All rights reserved.</p>
+    <p>&#169; 2025 Selenix Co. All rights reserved.</p>
     <div class="footer-links">
       <a href="#hero">Home</a>
       <a href="#services">Services</a>
@@ -885,44 +716,44 @@
     }
     function drawStars(t) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      stars.forEach(s => {
-        const op = s.o * (0.5 + 0.5 * Math.sin(t * s.speed + s.offset));
+      stars.forEach(function(s) {
+        var op = s.o * (0.5 + 0.5 * Math.sin(t * s.speed + s.offset));
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(210,220,235,${op})`;
+        ctx.fillStyle = 'rgba(210,220,235,' + op + ')';
         ctx.fill();
       });
       requestAnimationFrame(drawStars);
     }
-    window.addEventListener('resize', () => { resize(); initStars(); });
+    window.addEventListener('resize', function() { resize(); initStars(); });
     resize(); initStars();
     requestAnimationFrame(drawStars);
 
     /* CURSOR */
-    const cursor = document.getElementById('cursor');
-    const ring   = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    var cursor = document.getElementById('cursor');
+    var ring   = document.getElementById('cursorRing');
+    var mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; });
     (function animCursor() {
-      cursor.style.left = mx - 3.5 + 'px';
-      cursor.style.top  = my - 3.5 + 'px';
+      cursor.style.left = mx + 'px';
+      cursor.style.top  = my + 'px';
       rx += (mx - rx) * 0.12;
       ry += (my - ry) * 0.12;
-      ring.style.left = rx - 15 + 'px';
-      ring.style.top  = ry - 15 + 'px';
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
       requestAnimationFrame(animCursor);
     })();
 
     /* SCROLL REVEAL */
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e, i) {
         if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 90);
+          setTimeout(function() { e.target.classList.add('visible'); }, i * 90);
           obs.unobserve(e.target);
         }
       });
     }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 
     /* FORM */
     function handleSubmit(e) {
