@@ -788,12 +788,12 @@
     var mx = 0, my = 0, rx = 0, ry = 0;
     document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; });
     (function animCursor() {
-      cursor.style.left = mx + 'px';
-      cursor.style.top  = my + 'px';
+      cursor.style.left = (mx - 3.5) + 'px';
+      cursor.style.top  = (my - 3.5) + 'px';
       rx += (mx - rx) * 0.12;
       ry += (my - ry) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top  = ry + 'px';
+      ring.style.left = (rx - 15) + 'px';
+      ring.style.top  = (ry - 15) + 'px';
       requestAnimationFrame(animCursor);
     })();
 
